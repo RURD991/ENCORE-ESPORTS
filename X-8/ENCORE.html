@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCORE ESPORTS</title>
+    <!-- Add your CSS stylesheets here -->
+    <style>
+        /* CSS for fade-in/fade-out transition */
+        body {
+            font-family: 'Orbitron', sans-serif;
+            color:#fff;
+            scroll-behavior: smooth; /* Enable smooth scrolling behavior */
+            cursor: none;
+        }
+
+        header {
+            background-color: none;
+            position: fixed;
+            top: 0; /* Stick to the top */
+            width: 100%; /* Full width */
+            z-index: 999; /* Ensure it's above other content */
+            color: #fff;
+            text-align: right;
+            padding: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+            margin-right: 90px;
+            margin-top: 50px; /* Adjust top margin in pixels */
+        }
+        nav li {
+            display: inline;
+            font-size: 13px;
+            margin-left: 20px; /* Adjust spacing between menu items */
+
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.5s, font-size 0.7s; /* Add smooth transitions for color and transform */
+        }
+
+        nav a:hover,
+        nav a:focus,
+        #logo:hover {
+            color: #c22bdc; /* Change color on hover/focus to the desired glowing color (purple in this case) */
+            transform: scale(1.1); /* Enlarge the button slightly on hover/focus */
+            font-size: 20px;
+            filter: brightness(150%) drop-shadow(0 0 10px rgb(194, 41, 255)); /* Add glow effect by increasing brightness */
+        }
+
+        #cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(255, 77, 255);
+            border-radius: 50%;
+            mix-blend-mode: screen; /* Apply mix-blend-mode for a blending effect */
+            pointer-events: none; /* Ensure the cursor doesn't interfere with elements */
+            animation: radiation 1.5s linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes radiation {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translate(-50%, -50%) scale(1.5) rotate(90deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1) rotate(180deg);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translate(-50%, -50%) scale(1.5) rotate(270deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+
+        html, body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth; /* Enable smooth scrolling behavior */
+            margin: 0; /* Remove default margins */
+            padding: 0; /* Remove default padding */
+            background: linear-gradient(to top left, #1f0038 0%, #4e008e 80%, #ffffff 100%); /* Dark purple (#4e008e) at the bottom right to white (#ffffff) at the top left */
+        }
+
+        #home {
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Ensure the section takes up the full viewport height */
+        }
+
+        .banner h2 {
+            font-size: 80px;
+            margin: 0;
+            color: black; /* Start with transparent text */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            font-family: 'Nosifer', sans-serif;
+            position: absolute; /* Add relative positioning to create pseudo-element */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 100vh;
+            mix-blend-mode: multiply ;
+            background: linear-gradient(to top left, #1f0038 0%, #4e008e 10%, #ffffff 100%); /* Dark purple (#4e008e) at the bottom right to white (#ffffff) at the top left */
+        }
+
+        .banner
+        {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner video
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #about{
+            height: 140vh;
+        }
+
+        #about h2 {
+            color:  rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+        }
+
+        #about h3 {
+            font-size: 30px; /* Adjust the font size as needed for the subtitle */
+            margin-top: 0; /* Add spacing between the club name and subtitle */
+            margin-left: 20px;
+            color: rgb(118, 0, 124); /* Set text color to white */
+        }
+
+        #about p {
+            font-size: 23px; /* Adjust the font size as needed for the subtitle */
+            margin-top: 0; /* Add spacing between the club name and subtitle */
+            margin-left: 20px;
+            margin-right: 800px;
+            color: rgb(255, 255, 255); /* Set text color to white */
+            opacity: 100%;
+        }
+
+        #announcements{
+            height: 140vh;
+        }
+
+        #announcements h2 {
+            color:  rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+        }
+
+        #events{
+            height: 140vh;
+        }
+
+        #events h2 {
+            color:  rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+        }
+
+
+        #previous-events{
+            height: 140vh;
+        }
+
+        #previous-events h2 {
+            color:  rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+        }
+
+        #rules{
+            height: 140vh;
+        }
+        
+        #rules h2 {
+            color:  rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+            width: 105%; 
+        }
+
+        #rules h3 {
+            font-size: 20px; /* Adjust the font size as needed for the subtitle */
+            margin-top: 0; /* Add spacing between the club name and subtitle */
+            margin-left: 20px;
+            color: rgb(125, 50, 132); /* Set text color to white */
+            width: 105%; 
+        }
+
+
+        #rules p {
+            font-size: 15px; /* Adjust the font size as needed for the subtitle */
+            margin-top: 0; /* Add spacing between the club name and subtitle */
+            margin-left: 20px;
+            margin-right: 80px;
+            color: rgb(255, 0, 212); /* Set text color to white */
+            width: 105%; 
+        }
+
+        
+        #rules li {
+            font-size: 13px; /* Adjust the font size as needed for the subtitle */
+            margin-top: 0; /* Add spacing between the club name and subtitle */
+            margin-left: 20px;
+            margin-right: 80px;
+            color: rgb(155, 180, 216); /* Set text color to white */
+            width: 105%; 
+        }
+
+        #contact {
+            height: 50vh;
+            width: 100%;
+        }
+
+        #contact h2 {
+            left: 600px;
+            color: rgb(243, 181, 255); /* Start with transparent text */
+            padding: 10px; /* Add padding for better visibility */
+            font-size: 40px; /* Adjust the font size of the club name */
+            margin: 0; /* Remove default margin to eliminate spacing */
+            background-clip: text; /* Clip the background to the text */
+            -webkit-background-clip: text; /* For compatibility with some browsers */
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative; /* Add relative positioning to create pseudo-element */
+        }
+
+
+        section {
+            margin: 0; /* Remove default margins */
+            padding: 0; /* Remove default padding */
+            height: 140vh; /* Ensure each section takes up the full viewport height */
+            opacity: 0; /* Initially transparent */
+            transition: opacity 3s ease-in-out; /* Longer duration and easing */
+            width: auto;
+        }
+
+          /* CSS for logo */
+        .logo {
+            position: fixed; /* Fixed positioning */
+            top: 10px; /* Adjust the top value as needed for vertical positioning */
+            left: 150px; /* Adjust the left value as needed for horizontal positioning */
+            z-index: 999; /* Ensure it's above other elements */
+            width: 110px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            opacity: 40%;
+        }
+
+        #logo:hover {
+            filter: brightness(150%) drop-shadow(0 0 10px rgb(194, 41, 255)); /* Add glow effect by increasing brightness */
+        }
+
+        .bk {
+            position: absolute;
+            top: 900px;
+            right: 50px;
+            z-index: 999;
+            width: 700px;
+            height: auto;
+            opacity: 0; /* Start with 0 opacity */
+            animation: fadeInOut 8s linear infinite; /* Use a fade-in-out animation */
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 0.1;
+            }
+            20%, 80% {
+                opacity: 0.2;
+            }
+            30%, 70% {
+                opacity: 0.3;
+            }
+            40%, 60% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.80;
+            }
+        }
+
+        /*IMG CHG*/
+        #aboutImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(90%); /* Adjust brightness as needed */
+        }
+
+        .social-button {
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 20px; /* Adjust the margin as needed */
+            position: relative; /* Added for positioning */
+            top: 70px;
+            left: 335px;
+            display: inline-block; /* Ensures images appear in a row */
+        }
+        /*IMG CHG*/
+
+        #WP {
+            height: 30px;
+            width: 50px;
+        }
+
+        #Disc {
+            height: 35px;
+            width: 45px;
+        }
+
+        #Insta {
+            height: 30px;
+            width: 30px;
+        }
+
+
+        #WP1 {
+            height: 30px;
+            width: 50px;
+        }
+
+        #Disc1 {
+            height: 30px;
+            width: 45px;
+        }
+
+        #Insta1 {
+            height: 30px;
+            width: 30px;
+        }
+
+        #WP, #Disc, #Insta {
+            transition: transform 0.3s, filter 0.3s; /* Add smooth transitions for transform and filter */
+        }
+
+        #WP:hover, #Disc:hover, #Insta:hover,
+        #WP:focus, #Disc:focus, #Insta:focus {
+            transform: scale(1.4); /* Enlarge the images slightly on hover/focus */
+            filter: brightness(150%) drop-shadow(0 0 10px rgb(194, 41, 255)); /* Add glow effect by increasing brightness */
+        }
+
+        /*background*/
+
+        #home::before {
+            background: linear-gradient(to top left, #1f0038 0%, #4e008e 50%, #ffffff 100%); /* Dark purple (#4e008e) at the bottom right to white (#ffffff) at the top left */
+        }
+
+        #contact::before {
+            background: linear-gradient(to top left, #1f0038 0%, #4e008e 50%, #ffffff 100%); /* Dark purple (#4e008e) at the bottom right to white (#ffffff) at the top left */
+        }
+
+        #about a:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: rgb(114, 6, 114); /* Change background color on hover */
+            transform: scale(1.2); /* Enlarge the button on hover */
+            transition: color 0.3s, background-color 0.3s, transform 0.3s; /* Add smooth transitions */
+            box-shadow: 0 0 50px rgba(153, 0, 213, 0.7); /* Add a subtle glow effect on hover */
+        }
+
+        /* New styles for the egg button */
+        #jumpingButton {
+            position: absolute;
+            opacity: 60%;
+            bottom: 260px;
+            right: 760px;
+            width: 40px;
+            height: 60px;
+            opacity: 0;
+            background-image: url('img/egg.png');
+            background-size: cover;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s; /* Add smooth transitions for transform and filter */
+            animation: jumpAndMove 1s infinite alternate , fadeIn 20s infinite;
+            z-index: 1000;
+        }
+
+        #jumpingButton:hover {
+            transform: scale(1.2); /* Enlarge the button on hover */
+            filter: brightness(150%) drop-shadow(0 0 10px rgb(194, 41, 255)); /* Add glow effect by increasing brightness */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        @keyframes jumpAndMove {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-10px) translateX(5px);
+            }
+        }
+
+        /* New styles for the egg video modal */
+        #videoModal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 2000;
+    }
+
+    #videoContainer {
+        position: absolute;
+        width: 80%; /* Adjust the width of the video container */
+        max-width: 800px; /* Set a maximum width for the video container */
+        z-index: 2000;
+    }
+
+    #videoPlayer {
+        width: 100%;
+        height: auto;
+        z-index: 2000;
+    }
+
+    #closeButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+        z-index: 2000;
+    }
+    /*end*/
+
+    </style>
+
+</head>
+<body>
+    <!-- Logo -->
+    <a href="#home"><img id="logo"src="img/logo.png" alt="ENCORE ESPORTS Logo" class="logo"></a>
+
+    <!-- New button for jumping and moving -->
+    <div id="jumpingButton" onclick="playVideo()"></div>
+
+    <div id="cursor"></div>
+
+    <!-- Video modal -->
+    <div id="videoModal">
+        <div id="videoContainer">
+            <span id="closeButton" onclick="closeVideoModal()">&times;</span>
+            <video id="videoPlayer" controls></video>
+        </div>
+    </div>
+
+    <div id="buttons-container">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#announcements">ANNOUNCEMENTS</a></li>
+                <li><a href="#events">EVENTS</a></li>
+                <li><a href="#previous-events">PREVIOUS EVENTS</a></li>
+                <li><a href="#rules">RULES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    </div>
+
+    <!-- Home section -->
+    <section id="home">
+        <div class="banner">
+            <video autoplay muted loop>
+                <source src="img/fire.mp4" type="video/mp4">
+            </video>
+            <h2>ENCORE ESPORTS</h2>
+        </div>
+
+    </section>
+
+    <!-- About section -->
+    <section id="about">
+
+        <h2>ABOUT US</h2>
+
+        <h3>WHAT ARE WE</h3>
+
+        <p>Welcome to ENCORE ESPORTS! </p>
+
+        <p>We are a passionate community of gamers from Jyothy Institute Of Technology. Our mission is to bring together gamers of all backgrounds and skill levels to celebrate our shared love for gaming.</p>
+
+        <p>Founded in 2023, our club is planning on organizing various gaming events, tournaments, and social gatherings. Whether you're into eSports, casual gaming, or just looking for a fun way to connect with fellow gamers, you've come to the right place!</p>
+
+        <p>Join us in exploring the latest games and re-living the nostalgia of old games, competing in exciting tournaments, and building lasting friendships within the gaming world. We look forward to having you as part of our gaming family!</p>
+        
+
+        <div class="bk">
+            <img id="aboutImage" alt="About Image">
+        </div>
+
+        <div style="display: flex; align-items: center;">
+            <a href="#contact" style="border: 2px solid rgb(162, 0, 162); background-color: transparent; color: rgb(162, 0, 162); position: relative; top: 50px; left: 250px; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 15px;">Contact Us</a>
+        </div>
+
+    </section>
+
+    <!-- Announcements section -->
+    <section id="announcements">
+
+        <h2>ANNOUNCEMENTS</h2>
+    
+    </section>
+
+    <!-- Events section -->
+    <section id="events">
+
+        <h2>EVENTS</h2>
+       
+    </section>
+
+    <!-- Previous Events section -->
+    <section id="previous-events">
+
+        <h2>PREVIOUS EVENTS</h2>
+    
+    </section>
+
+    <!-- Rules section -->
+    <section id="rules">
+        
+        <h2>RULES</h2>
+
+        <h3>
+            <strong>ENCORE ESPORTS Rules and Regulations</strong>
+        </h3>
+          
+          <p><strong>1. Membership:</strong></p>
+          <ul>
+            <li>Eligibility: Membership is open to anyone interested in gaming.</li>
+            <li>Joining: To become a member, individuals must fill the form and pay the one time club membership fee.</li>
+            <li>Participation: Members are encouraged to attend club meetings and events regularly.</li>
+          </ul>
+          
+          <p><strong>2. Meetings and Events:</strong></p>
+          <ul>
+            <li>Regular Meetings: Regular club meetings will be held for planning events and updating progress.</li>
+            <li>Announcements: Special events, tournaments, and gaming sessions will be announced in advance via whatsapp groups and in the announcements section on the website.</li>
+            <li>Member Involvement: Members are encouraged to suggest and organize gaming-related events.</li>
+          </ul>
+          
+          <p><strong>3. Conduct and Behavior:</strong></p>
+          <ul>
+            <li>Respect: All members are expected to treat each other with respect and courtesy.</li>
+            <li>Zero Tolerance: Discrimination, harassment, bullying, or any form of disruptive behavior will not be tolerated.</li>
+            <li>Resource Usage: Members should be responsible and respectful when using club resources and gaming equipment.</li>
+            <li>Disciplinary Action: Any violations of these conduct rules will be addressed by club leadership and may result in disciplinary action, including suspension or expulsion.</li>
+          </ul>
+          
+          <p><strong>4. Game Selection:</strong></p>
+          <ul>
+            <li>Focus: The club will primarily focus on playing hosting E-Games for its members and other interested gamers.</li>
+            <li>Member Input: Members are encouraged to propose new games for club consideration.</li>
+            <li>Decision Making: Selection of games for club activities will be decided by a majority vote among members.</li>
+          </ul>
+          
+          <p><strong>5. Tournaments and Events:</strong></p>
+          <ul>
+            <li>Organizing Events: The club may organize gaming tournaments and events throughout the year.</li>
+            <li>Voluntary Participation: Participation in tournaments and events is voluntary.</li>
+            <li>Details: Entry fees, rules, and prizes for tournaments will be announced in advance.</li>
+          </ul>
+          
+          <p><strong>6. Streaming and Content Creation:</strong></p>
+          <ul>
+            <li>Streaming and Content: Members are allowed to stream club activities or create gaming-related content.</li>
+            <li>Content Guidelines: Any content featuring the club must adhere to club rules and reflect a positive image of the club and its members.</li>
+          </ul>
+
+          <p><strong>7. Communication:</strong></p>
+        <ul>
+            <li>The club will use social media and the official website for announcements and discussions.</li>
+            <li>Members are encouraged to actively participate in club communication.</li>
+        </ul>
+
+        <p><strong>8. Amendments to Rules:</strong></p>
+        <ul>
+            <li>These rules and regulations may be amended by a majority vote of club members.</li>
+            <li>Members will be informed of any rule changes via Announcements.</li>
+        </ul>
+
+        <p><strong>9. Dispute Resolution:</strong></p>
+        <ul>
+            <li>Disputes among members will be resolved by club leadership through open communication and mediation.</li>
+            <li>In cases of severe rule violations or persistent misconduct, club leadership may take disciplinary action.</li>
+        </ul>
+
+        <p><strong>10. Acknowledgment and Agreement:</strong></p>
+        <ul>
+            <li>By becoming a member of ENCORE ESPORTS, individuals acknowledge that they have read, understood, and agreed to abide by these rules and regulations.</li>
+        </ul>
+
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact">
+        <h2>CONTACT US</h2>
+        <a href="https://chat.whatsapp.com/Jude8rxb9trBb3YEMtQvMS" target="_blank" class="social-button" id="WP">
+            <img src="img/WHP.png" alt="WhatsApp" id="WP1">
+        </a>
+        
+        <a href="https://discord.gg/drTE2tmG" target="_blank" class="social-button" id="Disc">
+            <img src="img/DIS.png" alt="Discord" id="Disc1">
+        </a>
+        
+        <a href="https://www.instagram.com/jitesports/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="social-button" id="Insta">
+            <img src="img/INS.png" alt="Instagram" id="Insta1">
+        </a>
+        
+    </section>
+
+    <!-- JavaScript for the Intersection Observer -->
+    <script>
+        // JavaScript code for the Intersection Observer
+        const handleIntersection = (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1"; // Set opacity to 1 (fade-in effect)
+                } else {
+                    entry.target.style.opacity = "0"; // Set opacity to 0 (fade-out effect)
+                }
+            });
+        };
+
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5, // Adjust this threshold as needed for smoother transition
+        };
+
+        const observer = new IntersectionObserver(handleIntersection, options);
+
+        const sections = document.querySelectorAll("section");
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+        
+        // bk
+
+        const images = ["img/cropped-3840-2160-573739.jpg", "img/cropped-3840-2400-371766.jpg", "img/cropped-3840-2400-542494.jpg", "img/cropped-3840-2400-703016.jpg", "img/bgmi.jpg", "img/cropped-3840-2400-916488.jpg", "img/cropped-3840-2400-1304607.jpeg", "img/cropped-3840-2400-927310.jpg", "img/cropped-8192-5120-1282982.jpg", "img/cropped-3840-2400-1323593.jpeg", "img/cropped-3840-2400-1325503.jpg", "img/cropped-8192-5120-1337440.jpeg"];
+        const imageElement = document.getElementById("aboutImage");
+        let currentImageIndex = 0;
+        let isFading = false;
+
+        const handleIntersections = (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    if (!isFading) {
+                        startImageChangeLoop();
+                    }
+                } else {
+                    entry.target.style.opacity = "0";
+                }
+            });
+        };
+
+        const observers = new IntersectionObserver(handleIntersections, {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5,
+        });
+
+        const aboutSection = document.getElementById("about");
+        observers.observe(aboutSection);
+
+        let imageChangeInterval;
+
+        const handleImageChange = () => {
+            imageElement.src = images[currentImageIndex];
+            imageElement.style.width = "600px"; // Set the width to a specific value, e.g., "100px" or "50%"
+            imageElement.style.height = "400px"; // Maintain aspect ratio
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+        };
+
+        const startImageChangeLoop = () => {
+            if (!isFading) {
+                isFading = true;
+                handleImageChange();
+                imageChangeInterval = setInterval(() => {
+                    handleImageChange();
+                }, 8000);
+            }
+        };
+
+        const stopImageChangeLoop = () => {
+            isFading = false;
+            clearInterval(imageChangeInterval);
+        };
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") {
+                stopImageChangeLoop();
+            } else if (document.visibilityState === "visible" && isFading) {
+                startImageChangeLoop();
+            }
+        });
+
+        //Background
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+
+            const strangeObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const { target, isIntersecting } = entry;
+                    if (isIntersecting) {
+                        if (target.id && target.id !== 'contact' && target.id !== 'home'){
+                            target.style.backgroundImage = `url('img/back.png')`; /* Update with image paths */
+                            target.style.backgroundBlendMode = 'multiply'; /* Add blend mode if needed */
+                            target.style.backgroundSize = 'cover';
+                            target.style.opacity = 0.2;
+                        }
+                    } else {
+                        target.style.opacity = 0;
+                    }
+                });
+            }, { threshold: 0 });
+
+            sections.forEach(section => strangeObserver.observe(section));
+        });
+
+        //cursor
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('cursor');
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });   
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.display = 'block'
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.style.display = 'none'
+        });
+
+        // video
+        function playVideo() {
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        videoPlayer.src = 'img/Intro.mp4';
+        videoPlayer.play();
+
+        videoModal.style.display = 'flex';
+        videoModal.style.opacity = 1;
+
+        // Add an event listener for the "ended" event
+        videoPlayer.addEventListener('ended', function() {
+            fadeOut(videoModal);
+        });
+
+        // Add an event listener for the close button
+        const closeButton = document.getElementById('closeButton');
+        closeButton.addEventListener('click', function() {
+            fadeOut(videoModal);
+        });
+    }
+
+    function fadeOut(element) {
+        let opacity = 1;
+
+        const fadeEffect = setInterval(function () {
+            if (opacity > 0) {
+                opacity -= 0.1;
+                element.style.opacity = opacity;
+            } else {
+                clearInterval(fadeEffect);
+                element.style.display = 'none';
+                element.style.opacity = 1;
+                closeVideoModal();
+            }
+        }, 100);
+    }
+
+    function closeVideoModal() {
+        const videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.pause();
+    }
+
+
+    //NAV
+    const navigationContainer = document.getElementById('buttons-container');
+    const logo = document.getElementById('logo');
+
+    let timeoutId;
+
+    document.addEventListener('mousemove', (e) => {
+        // Clear the previous timeout
+        clearTimeout(timeoutId);
+
+        // Show the navigation buttons and logo
+        navigationContainer.style.opacity = 1;
+        logo.style.opacity = 1;
+
+        // Set a new timeout to hide the navigation buttons and logo after 2 seconds
+        timeoutId = setTimeout(() => {
+            navigationContainer.style.opacity = 0;
+            logo.style.opacity = 0;
+        }, 2000);
+    });
+
+    // Make navigation buttons and logo reappear when the cursor is near their actual position
+    navigationContainer.addEventListener('mouseenter', () => {
+        navigationContainer.style.opacity = 1;
+        logo.style.opacity = 1;
+    });
+
+    logo.addEventListener('mouseenter', () => {
+        navigationContainer.style.opacity = 1;
+        logo.style.opacity = 1;
+    });
+
+    </script>
+</body>
+</html>
